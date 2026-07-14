@@ -1,0 +1,17 @@
+{
+  "name": "circuit-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:engine": "g++ -std=c++17 -O3 main.cpp -o sim_engine",
+    "build:engine:win": "g++ -std=c++17 -O3 main.cpp -o sim_engine.exe",
+    "install:all": "npm install --prefix server && npm install --prefix frontend",
+    "server": "npm start --prefix server",
+    "frontend": "npm run dev --prefix frontend",
+    "dev": "npm run build:engine:win && npm run install:all && concurrently \"npm run server\" \"npm run frontend\"",
+    "build": "npm run build:engine:win && npm run build --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
